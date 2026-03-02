@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untuk Adee Sayang ❤️</title>
+
+  <style>
+    /* Animasi Perubahan Warna Background */
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      /* Gradasi warna pink: Terang -> Gelap -> Soft */
+      background: linear-gradient(-45deg, #ff9a9e, #fecfef, #feada6, #fbb2d0);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 { font-size: 1.8rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+
+    button {
+      padding: 12px 25px;
+      border-radius: 25px;
+      border: none;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      background-color: white;
+      color: #ff6b6b;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: 0.3s;
+      touch-action: manipulation;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background-color: #fff0f0;
+    }
+
+    img {
+      width: 90%;
+      max-width: 320px;
+      height: auto;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 5px solid white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      margin: 15px 0;
+    }
+
+    .hidden { display: none; }
+
+    #pesan {
+      padding: 0 15px;
+      line-height: 1.7;
+      font-size: 1.1rem;
+      background: rgba(255, 255, 255, 0.2); /* Kotak transparan biar teks kebaca */
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 400px;
+      backdrop-filter: blur(5px);
+    }
+  </style>
+</head>
+
+<body>
+
+<section id="slide1">
+  <h1>Hai sayanggkuu sifaunasida 😊</h1>
+  <p>Mass punya sesuatu buat Adee sayanggg...</p>
+  <button onclick="nextSlide(2)">Klik ya sayangggkuu ❤️</button>
+</section>
+
+<section id="slide2" class="hidden">
+  <h2>Kenangan kita ✨</h2>
+  <img id="foto" src="foto1.jpeg">
+  <div>
+    <button onclick="prevFoto()">⬅ Balik</button>
+    <button onclick="nextFoto()">Lanjut ➡</button>
+  </div>
+  <button onclick="nextSlide(3)" style="margin-top: 30px; background: #ff6b6b; color: white;">Buka Pesan Dari Mass 👉</button>
+</section>
+
+<section id="slide3" class="hidden">
+  <div id="pesan"></div>
+  <button id="btnPesan" onclick="showPesan()">Buka Pesan 💌</button>
+</section>
+
+<script>
+  function nextSlide(n) {
+    document.querySelectorAll("section").forEach(s => s.classList.add("hidden"));
+    document.getElementById("slide" + n).classList.remove("hidden");
+    window.scrollTo(0, 0);
+  }
+
+  // Sesuai folder kamu (foto1.jpeg - foto8.jpeg)
+  const fotos = [
+    "foto1.jpeg", "foto2.jpeg", "foto3.jpeg", "foto4.jpeg",
+    "foto5.jpeg", "foto6.jpeg", "foto7.jpeg", "foto8.jpeg"
+  ];
+  let index = 0;
+
+  function nextFoto(){
+    index = (index + 1) % fotos.length;
+    document.getElementById("foto").src = fotos[index];
+  }
+
+  function prevFoto(){
+    index = (index - 1 + fotos.length) % fotos.length;
+    document.getElementById("foto").src = fotos[index];
+  }
+
+  function showPesan(){
+    document.getElementById("pesan").innerHTML =
+    "<h3>Teruntuk Adee Sayangku, Sifaunasida 💕</h3>" +
+    "Adee, makasih ya sudah hadir dan jadi bagian terindah dalam hidup Mass. " +
+    "Mass tahu Mass jauh dari kata sempurna, tapi kehadiran Adee selalu bikin Mass merasa jadi laki-laki yang paling beruntung di dunia ini. <br><br>" +
+    "Makasih sudah sabar sama Mass, makasih sudah selalu dengerin cerita Mass, " +
+    "dan makasih sudah mau bertahan sejauh ini. Setiap tawa Adee itu semangat buat Mass, " +
+    "dan setiap doa Adee itu penguat buat Mass. <br><br>" +
+    "Mass janji bakal selalu berusaha buat jaga perasaan Adee, " +
+    "bakal selalu ada buat Adee dalam keadaan apapun, susah maupun senang. " +
+    "Tetap sama Mass terus ya sayang, kita rajut masa depan kita pelan-pelan sampai semuanya tercapai. <br><br>" +
+    "Jangan pernah ragu sama sayang dan tulusnya Mass ke Adee. " +
+    "Mass sayang banget sama Adee, hari ini, besok, dan selamanya. ❤️<br><br>" +
+    "<strong>With Love, Mass-mu ✨</strong>";
+    
+    document.getElementById("btnPesan").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
